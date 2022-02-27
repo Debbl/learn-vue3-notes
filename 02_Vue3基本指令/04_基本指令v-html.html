@@ -1,0 +1,39 @@
+<!--
+  v-html
+  vue默认是不解析 html, v-html 可以将 html 内容进行解析
+  * 类似 js 的 innerHTML *
+  可以看到 foo 并没有显示
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="tem">
+    <h2>{{htmlContent}}</h2>
+    <h2 v-html="htmlContent">foo</h2>
+  </template>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      template: '#tem',
+      data() {
+        return {
+          htmlContent: '<span style="color: red; background: blue">Debbl</span>'
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>
