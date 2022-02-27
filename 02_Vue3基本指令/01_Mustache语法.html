@@ -1,0 +1,56 @@
+<!--
+  Mustache 可以是 data 中的属性 或 一个 JavaScript 表达式
+1. {{message}} 可以直接获取 data 里的数据
+2. {{counter * 10}} 表达式
+3. {{message.split(" ").reverse().join(" ")}} 表达式
+4. {{isShow ? 'show' : 'no show'}} 三元运算符
+
+5. *错误用法 赋值语句 if表达式
+ - {{var name = 'foo'}}
+ - {{ if(isShow) { return 'show'} }}
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="tem">
+    <h2>{{message}} - {{message}}</h2>
+    <h2>{{counter * 10}}</h2>
+    <h2>{{message.split(" ").reverse().join(" ")}}</h2>
+    <h2>{{isShow ? 'show' : 'no show'}}</h2>
+  </template>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      template: '#tem',
+      data() {
+        return {
+          message: "Hello World",
+          counter: 100,
+          isShow: true,
+        }
+      },
+      methods: {
+        getReverseMessage() {
+          return this.message.split(' ').reverse.join(' ');
+        },
+        toggle() {
+          this.isShow = !this.isShow;
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>
