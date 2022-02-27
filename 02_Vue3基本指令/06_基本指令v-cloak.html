@@ -1,0 +1,50 @@
+<!--
+  v-cloak
+  cloak 斗篷
+  * 用于隐藏没有编译的组件知道其编译完成 *
+    CSS
+    [v-cloak] {
+      display: none;
+    }
+
+    Template
+    <template id="tem">
+      <h2 v-cloak>{{message}}</h2>
+    </template>
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="tem">
+    <h2 v-cloak>{{message}}</h2>
+  </template>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      template: '#tem',
+      data() {
+        return {
+          message: "Hello World",
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>
